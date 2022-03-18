@@ -24,3 +24,6 @@ func main() {
 
 	fmt.Println(arr)
 }
+
+// Time complexity : O(n * d) 
+// Auxiliary Space : O(1)
