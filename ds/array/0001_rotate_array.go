@@ -2,33 +2,30 @@ package main
 
 import "fmt"
 
-func rotateArray(arr []int, d int) {
+func leftRotate(arr []int, d int) {
+	for i := 0; i < d; i++ {
+		leftRotateByOne(arr)
+	}
 
-	// length of array
+}
+
+func leftRotateByOne(arr []int) {
 	n := len(arr)
 
-	// run a look form 0->d
-	for i := 0; i < d; i++ {
-		// get first value from array
-		val := arr[i]
-
-		// left shift element
-		for j := 0; j < n-1; j++ {
-			arr[j] = arr[j+1]
-		}
-
-		arr[n-1] = val
+	temp := arr[0]
+	for i := 0; i < n-1; i++ {
+		arr[i] = arr[i+1]
 	}
+
+	arr[n-1] = temp
 }
 
 func main() {
-	arr := []int{10, 3, -1, 2, 3, 4, 5, 6}
+	arr := []int{10, 20, 30, 40, 50, 60, 70, 80} // [40 50 60 70 80 10 20 30]
 
-	rotateArray(arr, 3)
+	leftRotate(arr, 3)
 
 	fmt.Println(arr)
 }
 
-// output: [2 3 4 5 6 10 -1 3]
-// complexity: O(n*d)
-// Auxiliary space O(1)
+// Complexity - O(n*d)
